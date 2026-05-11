@@ -1,0 +1,59 @@
+---
+title: "Arbitrary animation values with square bracket syntax"
+description: "Use square bracket syntax to apply one-off animation values not in your theme — like delay-[2s], duration-[400ms], or ease-[cubic-bezier(...)]."
+---
+
+Every utility provided by `tailwindcss-animate` supports Tailwind's arbitrary value syntax. By wrapping any valid CSS value in square brackets, you can apply a one-off animation property without touching your theme configuration. This works for durations, delays, timing functions, opacity, scale, rotation, and translation — the full set of animation utilities.
+
+## Duration
+
+```html
+<div class="animate-in fade-in duration-[400ms]">...</div>
+```
+
+## Delay
+
+```html
+<div class="animate-in fade-in delay-[2s]">...</div>
+```
+
+## Timing function
+
+```html
+<div class="animate-in ease-[cubic-bezier(0.4,0,0.2,1)]">...</div>
+```
+
+## Fade opacity
+
+```html
+<div class="animate-in fade-in-[0.15]">...</div>
+```
+
+## Zoom scale
+
+```html
+<div class="animate-in zoom-in-[0.85]">...</div>
+```
+
+## Spin rotation
+
+```html
+<div class="animate-in spin-in-[45deg]">...</div>
+```
+
+## Slide translate
+
+```html
+<div class="animate-in slide-in-from-top-[10vh]">...</div>
+<div class="animate-out slide-out-to-left-[50%]">...</div>
+```
+
+<Note>
+  Arbitrary value syntax is a core Tailwind feature. See the [Tailwind CSS arbitrary values documentation](https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values) for a full explanation of how it works and where it can be applied.
+</Note>
+
+## When to use arbitrary values vs. theme extension
+
+<Tip>
+  Prefer extending your theme when a value is reused in multiple places across the project — this keeps your markup concise and ensures the value is applied consistently. Reserve arbitrary values for truly one-off cases where adding a named token to the theme would add noise without benefit.
+</Tip>

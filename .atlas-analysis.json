@@ -1,0 +1,79 @@
+{
+  "projectType": "sdk-library",
+  "projectName": "tailwindcss-animate",
+  "projectDescription": "A Tailwind CSS plugin that adds animation utilities for enter/exit transitions, fade, zoom, spin, and slide effects with full control over timing, delay, direction, and fill mode.",
+  "theme": "willow",
+  "primaryColor": "#0ea5e9",
+  "lightColor": "#e0f2fe",
+  "darkColor": "#0369a1",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": ["introduction", "installation"]
+          },
+          {
+            "group": "Enter & Exit Animations",
+            "pages": [
+              "enter-animations",
+              "exit-animations"
+            ]
+          },
+          {
+            "group": "Animation Utilities",
+            "pages": [
+              "utilities/duration",
+              "utilities/delay",
+              "utilities/timing-function",
+              "utilities/fill-mode",
+              "utilities/direction",
+              "utilities/iteration-count",
+              "utilities/play-state"
+            ]
+          },
+          {
+            "group": "Customization",
+            "pages": [
+              "customization/theme",
+              "customization/arbitrary-values"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Enter animations with animate-in utility (fade, zoom, spin, slide)",
+    "Exit animations with animate-out utility (fade, zoom, spin, slide)",
+    "Full control over animation duration, delay, and timing function",
+    "Animation direction, fill mode, and iteration count utilities",
+    "Play state control (running/paused)",
+    "Composable utilities — combine multiple effects simultaneously",
+    "Tailwind variant support (hover, focus, responsive, prefers-reduced-motion)",
+    "Arbitrary value support via square bracket syntax",
+    "Fully customizable via tailwind.config.js theme extension"
+  ],
+  "publicApiSurface": [
+    "animate-in",
+    "animate-out",
+    "fade-in / fade-in-{amount}",
+    "fade-out / fade-out-{amount}",
+    "zoom-in / zoom-in-{amount}",
+    "zoom-out / zoom-out-{amount}",
+    "spin-in / spin-in-{amount}",
+    "spin-out / spin-out-{amount}",
+    "slide-in-from-top / slide-in-from-bottom / slide-in-from-left / slide-in-from-right",
+    "slide-out-to-top / slide-out-to-bottom / slide-out-to-left / slide-out-to-right",
+    "duration-{amount}",
+    "delay-{amount}",
+    "ease-{keyword}",
+    "fill-mode-{keyword}",
+    "direction-{keyword}",
+    "repeat-{amount}",
+    "running",
+    "paused"
+  ]
+}

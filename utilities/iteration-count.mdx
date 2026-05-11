@@ -1,0 +1,89 @@
+---
+title: "Animation iteration count — repeat animations with repeat-{n}"
+description: "Use repeat-{amount} utilities to set animation-iteration-count. Run animations once, a set number of times, or loop infinitely."
+---
+
+The `repeat-{amount}` utilities set the `animation-iteration-count` property on an element, controlling how many times an animation plays before stopping. Use `repeat-infinite` to create looping animations, or `repeat-1` when you want the animation to run exactly once.
+
+## Reference
+
+| Class             | Properties                              |
+| ----------------- | --------------------------------------- |
+| `repeat-0`        | `animation-iteration-count: 0;`         |
+| `repeat-1`        | `animation-iteration-count: 1;`         |
+| `repeat-infinite` | `animation-iteration-count: infinite;`  |
+
+## Basic usage
+
+### Changing animation iteration count
+
+Apply a `repeat-{amount}` class alongside any animation class to control how many times the animation cycles.
+
+```html
+<button class="animate-bounce repeat-0 ...">Button A</button>
+<button class="animate-bounce repeat-1 ...">Button B</button>
+<button class="animate-bounce repeat-infinite ...">Button C</button>
+```
+
+<Tip>
+  Use `repeat-0` to immediately stop an animation that was set elsewhere, for example to disable looping at a specific breakpoint or state.
+</Tip>
+
+## Applying conditionally
+
+### Hover, focus, and other states
+
+Use variant modifiers to change the iteration count in a specific state. For example, `hover:repeat-1` stops the infinite loop when the user hovers.
+
+```html
+<div class="animate-bounce repeat-infinite hover:repeat-1">
+  <!-- ... -->
+</div>
+```
+
+For a full list of available state modifiers, see the [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states) documentation.
+
+### Breakpoints and media queries
+
+Prefix any repeat utility with a responsive breakpoint to apply it only at that screen size and above.
+
+```html
+<div class="animate-bounce repeat-infinite md:repeat-1">
+  <!-- ... -->
+</div>
+```
+
+Learn more in the [Responsive Design](https://tailwindcss.com/docs/responsive-design) and [Dark Mode](https://tailwindcss.com/docs/dark-mode) documentation.
+
+## Customization
+
+### Extending the theme
+
+Add custom iteration count values by extending `animationRepeat` in your `tailwind.config.js` file.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animationRepeat: {
+        2: "2",
+      },
+    },
+  },
+}
+```
+
+Learn more in the [theme customization](https://tailwindcss.com/docs/theme#customizing-the-default-theme) documentation.
+
+### Arbitrary values
+
+For one-off values that don't belong in your theme, use square-bracket notation to generate the property on the fly.
+
+```html
+<div class="repeat-[2]">
+  <!-- ... -->
+</div>
+```
+
+Learn more in the [arbitrary values](https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values) documentation.

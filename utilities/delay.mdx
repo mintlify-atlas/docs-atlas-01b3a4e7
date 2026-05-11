@@ -1,0 +1,94 @@
+---
+title: "Animation delay — stagger animations with delay-{n}"
+description: "Use delay-{amount} utilities to control animation-delay. Stagger multiple animations by applying different delay values to sibling elements."
+---
+
+The `delay-{amount}` utilities set the `animation-delay` property on an element, controlling how long the browser waits before starting the animation. This is especially useful for staggering a sequence of elements so they animate in one after another rather than all at once.
+
+## Reference
+
+| Class        | Properties                  |
+| ------------ | --------------------------- |
+| `delay-75`   | `animation-delay: 75ms;`    |
+| `delay-100`  | `animation-delay: 100ms;`   |
+| `delay-150`  | `animation-delay: 150ms;`   |
+| `delay-200`  | `animation-delay: 200ms;`   |
+| `delay-300`  | `animation-delay: 300ms;`   |
+| `delay-500`  | `animation-delay: 500ms;`   |
+| `delay-700`  | `animation-delay: 700ms;`   |
+| `delay-1000` | `animation-delay: 1000ms;`  |
+
+<Note>
+  These classes reuse the same names as Tailwind's `transition-delay` utilities, since both are sourced from the `transitionDelay` theme key. This may change in a future release if it causes friction.
+</Note>
+
+## Basic usage
+
+### Staggering animations
+
+Apply increasing `delay-{amount}` values to sibling elements to create a staggered animation sequence.
+
+```html
+<button class="animate-bounce delay-150 duration-300 ...">Button A</button>
+<button class="animate-bounce delay-300 duration-300 ...">Button B</button>
+<button class="animate-bounce delay-700 duration-300 ...">Button C</button>
+```
+
+## Applying conditionally
+
+### Hover, focus, and other states
+
+Use variant modifiers to apply a delay only in a specific state. For example, `hover:delay-0` removes the delay on hover.
+
+```html
+<div class="animate-bounce duration-300 delay-150 hover:delay-0">
+  <!-- ... -->
+</div>
+```
+
+For a full list of available state modifiers, see the [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states) documentation.
+
+### Breakpoints and media queries
+
+Prefix any delay utility with a responsive breakpoint to apply it only at that screen size and above.
+
+```html
+<div class="animate-bounce duration-300 delay-150 md:delay-0">
+  <!-- ... -->
+</div>
+```
+
+Learn more in the [Responsive Design](https://tailwindcss.com/docs/responsive-design) and [Dark Mode](https://tailwindcss.com/docs/dark-mode) documentation.
+
+## Customization
+
+### Extending the theme
+
+Add custom delay values by extending `animationDelay` in your `tailwind.config.js` file.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animationDelay: {
+        "2s": "2s",
+      },
+    },
+  },
+}
+```
+
+Learn more in the [theme customization](https://tailwindcss.com/docs/theme#customizing-the-default-theme) documentation.
+
+### Arbitrary values
+
+For one-off values that don't belong in your theme, use square-bracket notation to generate the property on the fly.
+
+```html
+<div class="delay-[2s]">
+  <!-- ... -->
+</div>
+```
+
+Learn more in the [arbitrary values](https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values) documentation.

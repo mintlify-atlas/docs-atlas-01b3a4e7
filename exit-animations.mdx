@@ -1,0 +1,180 @@
+---
+title: "Exit animations with animate-out"
+description: "Use animate-out with fade-out, zoom-out, spin-out, and slide-out-to utilities to animate elements out of view with composable Tailwind CSS classes."
+---
+
+Exit animations control how elements disappear from screen. Adding `animate-out` to an element runs the `exit` keyframe animation, which reads from a set of CSS custom properties—`--tw-exit-opacity`, `--tw-exit-scale`, `--tw-exit-rotate`, `--tw-exit-translate-x`, and `--tw-exit-translate-y`—to determine the element's ending state. You compose the animation by pairing `animate-out` with one or more modifier utilities like `fade-out`, `zoom-out`, `spin-out`, and `slide-out-to-{direction}`, each of which sets the relevant custom property.
+
+## The `animate-out` class
+
+| Class | Properties |
+| --- | --- |
+| `animate-out` | `animation-name: exit; animation-duration: 150ms; --tw-exit-opacity: initial; --tw-exit-scale: initial; --tw-exit-rotate: initial; --tw-exit-translate-x: initial; --tw-exit-translate-y: initial;` |
+
+## Fade out
+
+`fade-out-{amount}` sets `--tw-exit-opacity` to control the opacity at the end of the animation. The element fades from its natural opacity to the given opacity. Using `fade-out` without an amount defaults to opacity `0`, so the element ends fully transparent.
+
+| Class | Properties |
+| --- | --- |
+| `fade-out` | `--tw-exit-opacity: 0;` |
+| `fade-out-0` | `--tw-exit-opacity: 0;` |
+| `fade-out-5` | `--tw-exit-opacity: 0.05;` |
+| `fade-out-10` | `--tw-exit-opacity: 0.1;` |
+| `fade-out-20` | `--tw-exit-opacity: 0.2;` |
+| `fade-out-25` | `--tw-exit-opacity: 0.25;` |
+| `fade-out-30` | `--tw-exit-opacity: 0.3;` |
+| `fade-out-40` | `--tw-exit-opacity: 0.4;` |
+| `fade-out-50` | `--tw-exit-opacity: 0.5;` |
+| `fade-out-60` | `--tw-exit-opacity: 0.6;` |
+| `fade-out-70` | `--tw-exit-opacity: 0.7;` |
+| `fade-out-75` | `--tw-exit-opacity: 0.75;` |
+| `fade-out-80` | `--tw-exit-opacity: 0.8;` |
+| `fade-out-90` | `--tw-exit-opacity: 0.9;` |
+| `fade-out-95` | `--tw-exit-opacity: 0.95;` |
+| `fade-out-100` | `--tw-exit-opacity: 1;` |
+
+```html
+<button class="animate-out fade-out ...">Button A</button>
+<button class="animate-out fade-out-25 ...">Button B</button>
+<button class="animate-out fade-out-50 ...">Button C</button>
+<button class="animate-out fade-out-75 ...">Button D</button>
+```
+
+<Tip>
+  Use arbitrary values like `fade-out-[.67]` to set an opacity not included in the default scale.
+</Tip>
+
+## Zoom out
+
+`zoom-out-{amount}` sets `--tw-exit-scale` to control the scale at the end of the animation. The element shrinks from its natural size to the given scale. Using `zoom-out` without an amount defaults to scale `0`, so the element ends invisible.
+
+| Class | Properties |
+| --- | --- |
+| `zoom-out` | `--tw-exit-scale: 0;` |
+| `zoom-out-0` | `--tw-exit-scale: 0;` |
+| `zoom-out-50` | `--tw-exit-scale: .5;` |
+| `zoom-out-90` | `--tw-exit-scale: .9;` |
+| `zoom-out-95` | `--tw-exit-scale: .95;` |
+| `zoom-out-100` | `--tw-exit-scale: 1;` |
+| `zoom-out-105` | `--tw-exit-scale: 1.05;` |
+| `zoom-out-110` | `--tw-exit-scale: 1.1;` |
+| `zoom-out-125` | `--tw-exit-scale: 1.25;` |
+| `zoom-out-150` | `--tw-exit-scale: 1.5;` |
+
+```html
+<button class="animate-out zoom-out ...">Button A</button>
+<button class="animate-out zoom-out-50 ...">Button B</button>
+<button class="animate-out zoom-out-75 ...">Button C</button>
+<button class="animate-out zoom-out-95 ...">Button D</button>
+```
+
+<Tip>
+  Use arbitrary values like `zoom-out-[1.75]` to set a scale not included in the default scale.
+</Tip>
+
+## Spin out
+
+`spin-out-{amount}` sets `--tw-exit-rotate` to control the rotation at the end of the animation. The element rotates from its natural (zero-rotation) position to the given angle. Using `spin-out` without an amount defaults to `30deg`.
+
+| Class | Properties |
+| --- | --- |
+| `spin-out` | `--tw-exit-rotate: 30deg;` |
+| `spin-out-0` | `--tw-exit-rotate: 0deg;` |
+| `spin-out-1` | `--tw-exit-rotate: 1deg;` |
+| `spin-out-2` | `--tw-exit-rotate: 2deg;` |
+| `spin-out-3` | `--tw-exit-rotate: 3deg;` |
+| `spin-out-6` | `--tw-exit-rotate: 6deg;` |
+| `spin-out-12` | `--tw-exit-rotate: 12deg;` |
+| `spin-out-45` | `--tw-exit-rotate: 45deg;` |
+| `spin-out-90` | `--tw-exit-rotate: 90deg;` |
+| `spin-out-180` | `--tw-exit-rotate: 180deg;` |
+
+```html
+<button class="animate-out spin-out ...">Button A</button>
+<button class="animate-out spin-out-12 ...">Button B</button>
+<button class="animate-out spin-out-45 ...">Button C</button>
+<button class="animate-out spin-out-90 ...">Button D</button>
+```
+
+<Tip>
+  Use arbitrary values like `spin-out-[175deg]` to set a rotation not included in the default scale.
+</Tip>
+
+## Slide out
+
+`slide-out-to-{direction}-{amount}` sets `--tw-exit-translate-x` or `--tw-exit-translate-y` to control where an element slides to as it exits. The element moves from its natural position to the offset position. Using a direction without an amount defaults to `100%` of the element's dimension.
+
+- `slide-out-to-top` and `slide-out-to-bottom` set `--tw-exit-translate-y`
+- `slide-out-to-left` and `slide-out-to-right` set `--tw-exit-translate-x`
+
+```html
+<button class="animate-out slide-out-to-top ...">Button A</button>
+<button class="animate-out slide-out-to-bottom-50 ...">Button B</button>
+<button class="animate-out slide-out-to-left-75 ...">Button C</button>
+<button class="animate-out slide-out-to-right-95 ...">Button D</button>
+```
+
+You can also change the direction on hover:
+
+```html
+<div class="animate-out slide-out-to-left hover:slide-out-to-right">
+  <!-- ... -->
+</div>
+```
+
+<Note>
+  The translate scale draws from Tailwind's full `translate` theme, including fractional values like `slide-out-to-top-1/2` (50%) and pixel values like `slide-out-to-left-px` (1px). Use arbitrary values like `slide-out-to-left-[17rem]` for one-off distances.
+</Note>
+
+## Combining effects
+
+Because each modifier utility sets a different CSS custom property, you can combine multiple exit utilities on the same element. All combined effects run simultaneously as part of the same `animate-out` animation.
+
+```html
+<button class="animate-out fade-out zoom-out ...">Button A</button>
+<button class="animate-out slide-out-to-top slide-out-to-left ...">
+  Button B
+</button>
+<button
+  class="animate-out fade-out zoom-out slide-out-to-top slide-out-to-left ..."
+>
+  Button C
+</button>
+```
+
+<Note>
+  You can combine effects that target different properties (opacity, scale, rotation, translation), but applying two utilities that set the same property — for example `fade-out-25` and `fade-out-50` — will result in one overriding the other.
+</Note>
+
+## Conditional application
+
+All exit utilities support Tailwind's variant modifiers, so you can apply them conditionally based on state, breakpoint, or media query.
+
+### Hover, focus, and other states
+
+Use `hover:animate-out` to trigger the exit animation only on hover, or pair a state modifier with a specific modifier utility to adjust an animation parameter.
+
+```html
+<div class="hover:animate-out hover:fade-out hover:zoom-out ...">
+  <!-- ... -->
+</div>
+```
+
+### Breakpoints and media queries
+
+Use responsive prefixes to apply exit animations at specific screen sizes:
+
+```html
+<div class="md:animate-out md:fade-out ...">
+  <!-- ... -->
+</div>
+```
+
+Use `motion-safe:animate-out` to respect the user's reduced motion preference:
+
+```html
+<div class="motion-safe:animate-out motion-safe:fade-out motion-safe:zoom-out ...">
+  <!-- ... -->
+</div>
+```

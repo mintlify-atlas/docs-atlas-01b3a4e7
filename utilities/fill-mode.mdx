@@ -1,0 +1,94 @@
+---
+title: "Animation fill mode — persist styles with fill-mode-{keyword}"
+description: "Use fill-mode-{keyword} utilities to control what styles apply before and after an animation runs, using animation-fill-mode on the element."
+---
+
+The `fill-mode-{keyword}` utilities set the `animation-fill-mode` property on an element, controlling which styles the element retains before the animation starts and after it ends. This is particularly useful when you need an element to stay in its final animated position or take on its initial keyframe styles during a delay period.
+
+## Reference
+
+| Class                 | Properties                         |
+| --------------------- | ---------------------------------- |
+| `fill-mode-none`      | `animation-fill-mode: none;`       |
+| `fill-mode-forwards`  | `animation-fill-mode: forwards;`   |
+| `fill-mode-backwards` | `animation-fill-mode: backwards;`  |
+| `fill-mode-both`      | `animation-fill-mode: both;`       |
+
+## Fill mode values
+
+- **`none`** — The element reverts to its original styles before and after the animation plays. This is the default browser behavior.
+- **`forwards`** — After the animation ends, the element retains the styles defined in the last keyframe.
+- **`backwards`** — During the delay period before the animation starts, the element takes on the styles of the first keyframe.
+- **`both`** — Combines the behavior of `forwards` and `backwards`: the element applies the first keyframe during the delay and retains the last keyframe after the animation ends.
+
+## Basic usage
+
+### Changing animation fill mode
+
+Apply a `fill-mode-{keyword}` class alongside any animation class to control how styles are applied outside the active animation period.
+
+```html
+<button class="animate-bounce fill-mode-none ...">Button A</button>
+<button class="animate-bounce fill-mode-forwards ...">Button B</button>
+<button class="animate-bounce fill-mode-backwards ...">Button C</button>
+<button class="animate-bounce fill-mode-both ...">Button D</button>
+```
+
+## Applying conditionally
+
+### Hover, focus, and other states
+
+Use variant modifiers to apply a fill mode only in a specific state. For example, `hover:fill-mode-forwards` retains the final animated styles when the user hovers over the element.
+
+```html
+<div class="animate-bounce duration-300 fill-mode-backwards hover:fill-mode-forwards">
+  <!-- ... -->
+</div>
+```
+
+For a full list of available state modifiers, see the [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states) documentation.
+
+### Breakpoints and media queries
+
+Prefix any fill mode utility with a responsive breakpoint to apply it only at that screen size and above.
+
+```html
+<div class="animate-bounce duration-300 fill-mode-backwards md:fill-mode-forwards">
+  <!-- ... -->
+</div>
+```
+
+Learn more in the [Responsive Design](https://tailwindcss.com/docs/responsive-design) and [Dark Mode](https://tailwindcss.com/docs/dark-mode) documentation.
+
+## Customization
+
+### Extending the theme
+
+Add custom fill mode values by extending `animationFillMode` in your `tailwind.config.js` file.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animationFillMode: {
+        "forwards-backwards": "forwards, backwards",
+      },
+    },
+  },
+}
+```
+
+Learn more in the [theme customization](https://tailwindcss.com/docs/theme#customizing-the-default-theme) documentation.
+
+### Arbitrary values
+
+For one-off values that don't belong in your theme, use square-bracket notation to generate the property on the fly.
+
+```html
+<div class="fill-mode-[forwards,backwards]">
+  <!-- ... -->
+</div>
+```
+
+Learn more in the [arbitrary values](https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values) documentation.

@@ -1,0 +1,111 @@
+---
+title: "Customize animation theme values in Tailwind config"
+description: "Extend or override animationDuration, animationDelay, animationOpacity, animationScale, and other theme keys in tailwind.config.js to match your design system."
+---
+
+The `tailwindcss-animate` plugin registers a set of new theme keys alongside Tailwind's built-in ones. You can extend or replace these keys in your `tailwind.config.js` file exactly as you would any other Tailwind theme value — using `theme.extend` to add to the defaults or the top-level `theme` key to replace them entirely.
+
+## Theme keys
+
+The plugin adds the following theme keys, each of which maps to a group of utility classes:
+
+<AccordionGroup>
+  <Accordion title="animationDelay">
+    Controls the `animation-delay` property via `delay-{n}` utilities. Defaults to the same values as Tailwind's `transitionDelay` scale (e.g. `75ms`, `100ms`, `150ms`, `200ms`, `300ms`, `500ms`, `700ms`, `1000ms`).
+  </Accordion>
+
+  <Accordion title="animationDuration">
+    Controls the `animation-duration` property via `duration-{n}` utilities. Defaults to Tailwind's `transitionDuration` values plus an extra `0` entry (`0ms`).
+  </Accordion>
+
+  <Accordion title="animationTimingFunction">
+    Controls the `animation-timing-function` property via `ease-{keyword}` utilities. Defaults to Tailwind's `transitionTimingFunction` values: `ease-linear`, `ease-in`, `ease-out`, and `ease-in-out`.
+  </Accordion>
+
+  <Accordion title="animationFillMode">
+    Controls the `animation-fill-mode` property via `fill-mode-{keyword}` utilities. Provides four fixed values: `none`, `forwards`, `backwards`, `both`.
+  </Accordion>
+
+  <Accordion title="animationDirection">
+    Controls the `animation-direction` property via `direction-{keyword}` utilities. Provides four fixed values: `normal`, `reverse`, `alternate`, `alternate-reverse`.
+  </Accordion>
+
+  <Accordion title="animationOpacity">
+    Controls the starting/ending opacity of enter and exit animations via `fade-in-{n}` and `fade-out-{n}` utilities. Defaults to Tailwind's full `opacity` scale with an additional `DEFAULT` value of `0`.
+  </Accordion>
+
+  <Accordion title="animationTranslate">
+    Controls the starting/ending translation of slide animations via `slide-in-from-{direction}-{n}` and `slide-out-to-{direction}-{n}` utilities. Defaults to Tailwind's full `translate` scale with an additional `DEFAULT` value of `100%`.
+  </Accordion>
+
+  <Accordion title="animationScale">
+    Controls the starting/ending scale of zoom animations via `zoom-in-{n}` and `zoom-out-{n}` utilities. Defaults to Tailwind's full `scale` scale with an additional `DEFAULT` value of `0`.
+  </Accordion>
+
+  <Accordion title="animationRotate">
+    Controls the starting/ending rotation of spin animations via `spin-in-{n}` and `spin-out-{n}` utilities. Defaults to Tailwind's full `rotate` scale with an additional `DEFAULT` value of `30deg`.
+  </Accordion>
+
+  <Accordion title="animationRepeat">
+    Controls the `animation-iteration-count` property via `repeat-{n}` utilities. Provides three fixed values: `0`, `1`, `infinite`.
+  </Accordion>
+</AccordionGroup>
+
+## Extending the defaults
+
+Use `theme.extend` to add new values on top of the plugin's defaults. None of the existing utilities are affected — only new ones are generated.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animationDuration: {
+        "2000": "2000ms",
+      },
+      animationDelay: {
+        "2s": "2s",
+        "5s": "5s",
+      },
+      animationOpacity: {
+        "15": "0.15",
+        "35": "0.35",
+        "85": "0.85",
+      },
+      animationScale: {
+        "80": "0.8",
+      },
+      animationRotate: {
+        "15": "15deg",
+        "60": "60deg",
+      },
+    },
+  },
+}
+```
+
+<Tip>
+  When you extend `animationDelay` or `animationDuration`, the new values automatically become available as `delay-{n}` and `duration-{n}` utilities alongside every existing value. No additional configuration is required.
+</Tip>
+
+## Overriding defaults
+
+To replace a theme key's defaults entirely, define the key directly under `theme` instead of `theme.extend`. The plugin's built-in values will be discarded, and only the values you provide will generate utilities.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    animationFillMode: {
+      forwards: "forwards",
+      both: "both",
+    },
+  },
+}
+```
+
+In the example above, only `fill-mode-forwards` and `fill-mode-both` will be generated. The default `fill-mode-none` and `fill-mode-backwards` utilities will no longer exist.
+
+<Warning>
+  Using `theme.extend.animationFillMode` **adds** values to the plugin defaults, while using `theme.animationFillMode` **replaces** them entirely. If you override a key at the top level, make sure to include every value you need — any defaults you omit will not generate a utility class.
+</Warning>

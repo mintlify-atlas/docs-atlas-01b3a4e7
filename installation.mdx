@@ -1,0 +1,78 @@
+---
+title: "Install and configure the tailwindcss-animate plugin"
+description: "Learn how to install tailwindcss-animate and add it to your Tailwind CSS project in three steps — from npm install to your first animation."
+---
+
+`tailwindcss-animate` is a Tailwind CSS plugin that adds a suite of composable animation utilities to your project. Instead of writing custom keyframes or inline styles, you apply utility classes directly in your markup to control entrance and exit animations, duration, delay, easing, and more — all within the Tailwind workflow you already know.
+
+<Steps>
+  <Step title="Install the package">
+    Add `tailwindcss-animate` to your project as a dev dependency using your preferred package manager.
+
+    <CodeGroup>
+
+    ```bash npm
+    npm install -D tailwindcss-animate
+    ```
+
+    ```bash yarn
+    yarn add -D tailwindcss-animate
+    ```
+
+    ```bash pnpm
+    pnpm add -D tailwindcss-animate
+    ```
+
+    </CodeGroup>
+  </Step>
+
+  <Step title="Register the plugin">
+    Open your `tailwind.config.js` file and add `tailwindcss-animate` to the `plugins` array.
+
+    ```js tailwind.config.js
+    // tailwind.config.js
+    module.exports = {
+      theme: {
+        // ...
+      },
+      plugins: [
+        require("tailwindcss-animate"),
+        // ...
+      ],
+    }
+    ```
+  </Step>
+
+  <Step title="Use the utilities">
+    Apply animation classes directly in your HTML. Combine `animate-in` or `animate-out` with modifier utilities to describe the animation you want.
+
+    ```html
+    <!-- Add an animated fade and zoom entrance -->
+    <div class="animate-in fade-in zoom-in">...</div>
+
+    <!-- Add an animated slide to top-left exit -->
+    <div class="animate-out slide-out-to-top slide-out-to-left">...</div>
+    ```
+  </Step>
+</Steps>
+
+<Note>
+  `tailwindcss-animate` requires Tailwind CSS v3.0 or later as a peer dependency.
+</Note>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Enter animations" icon="arrow-right-to-bracket" href="/enter-animations">
+    Fade, zoom, spin, and slide elements into view with composable enter utilities.
+  </Card>
+  <Card title="Exit animations" icon="arrow-right-from-bracket" href="/exit-animations">
+    Animate elements out of the DOM with matching exit utilities.
+  </Card>
+  <Card title="Animation utilities" icon="sliders" href="/utilities/duration">
+    Control duration, delay, easing, fill mode, and iteration count.
+  </Card>
+  <Card title="Customization" icon="palette" href="/customization/theme">
+    Extend the default theme to add your own animation values.
+  </Card>
+</CardGroup>

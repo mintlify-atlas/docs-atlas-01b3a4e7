@@ -1,0 +1,61 @@
+---
+title: "tailwindcss-animate: Tailwind CSS animation plugin"
+description: "tailwindcss-animate adds composable animation utilities to Tailwind CSS. Animate elements in and out with fade, zoom, spin, and slide effects using simple utility classes."
+---
+
+tailwindcss-animate extends Tailwind CSS with a set of animation utilities that make it simple to add polished enter and exit transitions to any element. Combine `animate-in` or `animate-out` with fade, zoom, spin, and slide modifiers to build expressive motion — all without leaving your HTML.
+
+<CardGroup cols={2}>
+  <Card title="Installation" icon="download" href="/installation">
+    Install the plugin and add it to your Tailwind config in minutes
+  </Card>
+  <Card title="Enter animations" icon="arrow-right-to-bracket" href="/enter-animations">
+    Fade, zoom, spin, and slide elements into view with animate-in
+  </Card>
+  <Card title="Exit animations" icon="arrow-right-from-bracket" href="/exit-animations">
+    Smoothly dismiss elements with fade-out, zoom-out, and slide-out utilities
+  </Card>
+  <Card title="Animation utilities" icon="sliders" href="/utilities/duration">
+    Control timing, delay, direction, fill mode, and more
+  </Card>
+</CardGroup>
+
+## Quick example
+
+Combine multiple utilities to create rich animations in a single class string:
+
+```html
+<!-- Fade and zoom in on enter -->
+<div class="animate-in fade-in zoom-in duration-300">...</div>
+
+<!-- Slide out to the top on exit -->
+<div class="animate-out slide-out-to-top duration-200">...</div>
+
+<!-- Stagger with delay -->
+<div class="animate-in fade-in delay-150">Item 1</div>
+<div class="animate-in fade-in delay-300">Item 2</div>
+<div class="animate-in fade-in delay-500">Item 3</div>
+```
+
+## How it works
+
+The plugin registers two core keyframe animations — `enter` and `exit` — driven by CSS custom properties. Utilities like `fade-in`, `zoom-in`, and `slide-in-from-top` set the appropriate CSS variable, which the keyframe picks up automatically. This design lets you stack multiple effects without conflicts.
+
+<Steps>
+  <Step title="Install the plugin">
+    Add `tailwindcss-animate` to your project with your preferred package manager.
+  </Step>
+  <Step title="Register the plugin">
+    Add `require("tailwindcss-animate")` to the `plugins` array in `tailwind.config.js`.
+  </Step>
+  <Step title="Add utilities to your HTML">
+    Use `animate-in` or `animate-out` together with effect modifiers like `fade-in`, `zoom-in`, or `slide-in-from-top`.
+  </Step>
+  <Step title="Customize as needed">
+    Extend `animationDuration`, `animationDelay`, and other theme keys in your Tailwind config to match your design system.
+  </Step>
+</Steps>
+
+<Note>
+  tailwindcss-animate requires Tailwind CSS v3.0 or later as a peer dependency.
+</Note>

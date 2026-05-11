@@ -1,0 +1,70 @@
+---
+title: "Animation play state — pause and resume with running/paused"
+description: "Use the running and paused utilities to control animation-play-state on any element. Pause animations conditionally using Tailwind variant modifiers."
+---
+
+The `running` and `paused` utilities set the `animation-play-state` property on an element, letting you start and stop animations without removing them from the DOM. This is particularly useful for pausing an animation on hover or disabling it based on user preference.
+
+## Reference
+
+| Class     | Properties                        |
+| --------- | --------------------------------- |
+| `running` | `animation-play-state: running;`  |
+| `paused`  | `animation-play-state: paused;`   |
+
+## Basic usage
+
+### Controlling animation play state
+
+Apply `running` or `paused` alongside any animation class to set whether the animation is active.
+
+```html
+<button class="animate-bounce running ...">Button B</button>
+<button class="animate-bounce paused ...">Button A</button>
+```
+
+### Pausing on hover
+
+A common pattern is to start an animation in the running state and pause it when the user hovers over the element.
+
+```html
+<button class="animate-bounce hover:paused ...">Hover to pause</button>
+```
+
+## Applying conditionally
+
+### Hover, focus, and other states
+
+Use variant modifiers to toggle play state based on user interaction. For example, pair `paused` as the default with `hover:running` to play the animation only on hover.
+
+```html
+<div class="animate-bounce paused hover:running">
+  <!-- ... -->
+</div>
+```
+
+You can also respond to focus for keyboard-accessible controls:
+
+```html
+<button class="animate-bounce paused focus:running">
+  <!-- ... -->
+</button>
+```
+
+For a full list of available state modifiers, see the [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states) documentation.
+
+### Breakpoints and media queries
+
+Prefix a play state utility with a responsive breakpoint to apply it only at that screen size and above.
+
+```html
+<div class="animate-bounce paused md:running">
+  <!-- ... -->
+</div>
+```
+
+<Tip>
+  Combine `paused` with the `motion-reduce` variant to respect user preferences for reduced motion without removing the animation entirely: `motion-reduce:paused`.
+</Tip>
+
+Learn more in the [Responsive Design](https://tailwindcss.com/docs/responsive-design) and [Dark Mode](https://tailwindcss.com/docs/dark-mode) documentation.

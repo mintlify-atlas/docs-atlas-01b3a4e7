@@ -1,0 +1,172 @@
+---
+title: "Enter animations with animate-in"
+description: "Use animate-in with fade-in, zoom-in, spin-in, and slide-in-from utilities to animate elements into view with composable Tailwind CSS classes."
+---
+
+Enter animations control how elements appear on screen. Adding `animate-in` to an element runs the `enter` keyframe animation, which reads from a set of CSS custom properties—`--tw-enter-opacity`, `--tw-enter-scale`, `--tw-enter-rotate`, `--tw-enter-translate-x`, and `--tw-enter-translate-y`—to determine the element's starting state. You compose the animation by pairing `animate-in` with one or more modifier utilities like `fade-in`, `zoom-in`, `spin-in`, and `slide-in-from-{direction}`, each of which sets the relevant custom property.
+
+## The `animate-in` class
+
+| Class | Properties |
+| --- | --- |
+| `animate-in` | `animation-name: enter; animation-duration: 150ms; --tw-enter-opacity: initial; --tw-enter-scale: initial; --tw-enter-rotate: initial; --tw-enter-translate-x: initial; --tw-enter-translate-y: initial;` |
+
+## Fade in
+
+`fade-in-{amount}` sets `--tw-enter-opacity` to control the opacity at the start of the animation. The element fades from the given opacity to its natural opacity. Using `fade-in` without an amount defaults to opacity `0`, so the element starts fully transparent.
+
+| Class | Properties |
+| --- | --- |
+| `fade-in` | `--tw-enter-opacity: 0;` |
+| `fade-in-0` | `--tw-enter-opacity: 0;` |
+| `fade-in-5` | `--tw-enter-opacity: 0.05;` |
+| `fade-in-10` | `--tw-enter-opacity: 0.1;` |
+| `fade-in-20` | `--tw-enter-opacity: 0.2;` |
+| `fade-in-25` | `--tw-enter-opacity: 0.25;` |
+| `fade-in-30` | `--tw-enter-opacity: 0.3;` |
+| `fade-in-40` | `--tw-enter-opacity: 0.4;` |
+| `fade-in-50` | `--tw-enter-opacity: 0.5;` |
+| `fade-in-60` | `--tw-enter-opacity: 0.6;` |
+| `fade-in-70` | `--tw-enter-opacity: 0.7;` |
+| `fade-in-75` | `--tw-enter-opacity: 0.75;` |
+| `fade-in-80` | `--tw-enter-opacity: 0.8;` |
+| `fade-in-90` | `--tw-enter-opacity: 0.9;` |
+| `fade-in-95` | `--tw-enter-opacity: 0.95;` |
+| `fade-in-100` | `--tw-enter-opacity: 1;` |
+
+```html
+<button class="animate-in fade-in ...">Button A</button>
+<button class="animate-in fade-in-25 ...">Button B</button>
+<button class="animate-in fade-in-50 ...">Button C</button>
+<button class="animate-in fade-in-75 ...">Button D</button>
+```
+
+<Tip>
+  Use arbitrary values like `fade-in-[.67]` to set an opacity not included in the default scale.
+</Tip>
+
+## Zoom in
+
+`zoom-in-{amount}` sets `--tw-enter-scale` to control the scale at the start of the animation. The element grows from the given scale to its natural size. Using `zoom-in` without an amount defaults to scale `0`, so the element starts invisible.
+
+| Class | Properties |
+| --- | --- |
+| `zoom-in` | `--tw-enter-scale: 0;` |
+| `zoom-in-0` | `--tw-enter-scale: 0;` |
+| `zoom-in-50` | `--tw-enter-scale: .5;` |
+| `zoom-in-90` | `--tw-enter-scale: .9;` |
+| `zoom-in-95` | `--tw-enter-scale: .95;` |
+| `zoom-in-100` | `--tw-enter-scale: 1;` |
+| `zoom-in-105` | `--tw-enter-scale: 1.05;` |
+| `zoom-in-110` | `--tw-enter-scale: 1.1;` |
+| `zoom-in-125` | `--tw-enter-scale: 1.25;` |
+| `zoom-in-150` | `--tw-enter-scale: 1.5;` |
+
+```html
+<button class="animate-in zoom-in ...">Button A</button>
+<button class="animate-in zoom-in-50 ...">Button B</button>
+<button class="animate-in zoom-in-75 ...">Button C</button>
+<button class="animate-in zoom-in-95 ...">Button D</button>
+```
+
+<Tip>
+  Use arbitrary values like `zoom-in-[1.75]` to set a scale not included in the default scale.
+</Tip>
+
+## Spin in
+
+`spin-in-{amount}` sets `--tw-enter-rotate` to control the rotation at the start of the animation. The element rotates from the given angle to its natural (zero-rotation) position. Using `spin-in` without an amount defaults to `30deg`.
+
+| Class | Properties |
+| --- | --- |
+| `spin-in` | `--tw-enter-rotate: 30deg;` |
+| `spin-in-0` | `--tw-enter-rotate: 0deg;` |
+| `spin-in-1` | `--tw-enter-rotate: 1deg;` |
+| `spin-in-2` | `--tw-enter-rotate: 2deg;` |
+| `spin-in-3` | `--tw-enter-rotate: 3deg;` |
+| `spin-in-6` | `--tw-enter-rotate: 6deg;` |
+| `spin-in-12` | `--tw-enter-rotate: 12deg;` |
+| `spin-in-45` | `--tw-enter-rotate: 45deg;` |
+| `spin-in-90` | `--tw-enter-rotate: 90deg;` |
+| `spin-in-180` | `--tw-enter-rotate: 180deg;` |
+
+```html
+<button class="animate-in spin-in ...">Button A</button>
+<button class="animate-in spin-in-12 ...">Button B</button>
+<button class="animate-in spin-in-45 ...">Button C</button>
+<button class="animate-in spin-in-90 ...">Button D</button>
+```
+
+<Tip>
+  Use arbitrary values like `spin-in-[175deg]` to set a rotation not included in the default scale.
+</Tip>
+
+## Slide in
+
+`slide-in-from-{direction}-{amount}` sets `--tw-enter-translate-x` or `--tw-enter-translate-y` to control where an element slides in from. The element moves from the offset position to its natural position. Using a direction without an amount defaults to `100%` of the element's dimension.
+
+- `slide-in-from-top` and `slide-in-from-bottom` set `--tw-enter-translate-y`
+- `slide-in-from-left` and `slide-in-from-right` set `--tw-enter-translate-x`
+
+```html
+<button class="animate-in slide-in-from-top ...">Button A</button>
+<button class="animate-in slide-in-from-bottom-50 ...">Button B</button>
+<button class="animate-in slide-in-from-left-75 ...">Button C</button>
+<button class="animate-in slide-in-from-right-95 ...">Button D</button>
+```
+
+<Note>
+  The translate scale draws from Tailwind's full `translate` theme, including fractional values like `slide-in-from-top-1/2` (50%) and pixel values like `slide-in-from-left-px` (1px). Use arbitrary values like `slide-in-from-left-[17rem]` for one-off distances.
+</Note>
+
+## Combining effects
+
+Because each modifier utility sets a different CSS custom property, you can combine multiple enter utilities on the same element. All combined effects run simultaneously as part of the same `animate-in` animation.
+
+```html
+<button class="animate-in fade-in zoom-in ...">Button A</button>
+<button class="animate-in slide-in-from-top slide-in-from-left ...">
+  Button B
+</button>
+<button
+  class="animate-in fade-in zoom-in slide-in-from-top slide-in-from-left ..."
+>
+  Button C
+</button>
+```
+
+<Note>
+  You can combine effects that target different properties (opacity, scale, rotation, translation), but applying two utilities that set the same property — for example `fade-in-25` and `fade-in-50` — will result in one overriding the other.
+</Note>
+
+## Conditional application
+
+All enter utilities support Tailwind's variant modifiers, so you can apply them conditionally based on state, breakpoint, or media query.
+
+### Hover, focus, and other states
+
+Use `hover:animate-in` to trigger the enter animation only on hover, or pair a state modifier with a specific modifier utility to adjust an animation parameter.
+
+```html
+<div class="hover:animate-in hover:fade-in hover:zoom-in ...">
+  <!-- ... -->
+</div>
+```
+
+### Breakpoints and media queries
+
+Use responsive prefixes to apply enter animations at specific screen sizes:
+
+```html
+<div class="md:animate-in md:fade-in ...">
+  <!-- ... -->
+</div>
+```
+
+Use `motion-safe:animate-in` to respect the user's reduced motion preference:
+
+```html
+<div class="motion-safe:animate-in motion-safe:fade-in motion-safe:zoom-in ...">
+  <!-- ... -->
+</div>
+```

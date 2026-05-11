@@ -1,0 +1,92 @@
+---
+title: "Animation timing function — easing with ease-{keyword}"
+description: "Use ease-{keyword} utilities to set animation-timing-function. Choose from linear, ease-in, ease-out, ease-in-out, and more on animated elements."
+---
+
+The `ease-{keyword}` utilities set the `animation-timing-function` property on an element, controlling how an animation progresses through its keyframes over time. Choosing the right easing curve makes animations feel natural and purposeful rather than mechanical.
+
+## Reference
+
+| Class         | Properties                                                   |
+| ------------- | ------------------------------------------------------------ |
+| `ease-linear` | `animation-timing-function: linear;`                         |
+| `ease-in`     | `animation-timing-function: cubic-bezier(0.4, 0, 1, 1);`    |
+| `ease-out`    | `animation-timing-function: cubic-bezier(0, 0, 0.2, 1);`    |
+| `ease-in-out` | `animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);`  |
+
+<Note>
+  These classes reuse the same names as Tailwind's `transition-timing-function` utilities, since both are sourced from the `transitionTimingFunction` theme key. Modifying `transitionTimingFunction` in your theme also modifies `animationTimingFunction`. This may change in a future release if it causes friction.
+</Note>
+
+## Basic usage
+
+### Changing animation easing
+
+Apply an `ease-{keyword}` class alongside any animation class to control the acceleration curve of the animation.
+
+```html
+<button class="animate-bounce ease-linear ...">Button A</button>
+<button class="animate-bounce ease-in ...">Button B</button>
+<button class="animate-bounce ease-out ...">Button C</button>
+<button class="animate-bounce ease-in-out ...">Button D</button>
+```
+
+## Applying conditionally
+
+### Hover, focus, and other states
+
+Use variant modifiers to apply a timing function only in a specific state. For example, `hover:ease-in-out` switches to a smooth ease curve on hover.
+
+```html
+<div class="animate-bounce ease-linear hover:ease-in-out">
+  <!-- ... -->
+</div>
+```
+
+For a full list of available state modifiers, see the [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states) documentation.
+
+### Breakpoints and media queries
+
+Prefix any easing utility with a responsive breakpoint to apply it only at that screen size and above.
+
+```html
+<div class="animate-bounce ease-linear md:ease-in-out">
+  <!-- ... -->
+</div>
+```
+
+Learn more in the [Responsive Design](https://tailwindcss.com/docs/responsive-design) and [Dark Mode](https://tailwindcss.com/docs/dark-mode) documentation.
+
+## Customization
+
+### Extending the theme
+
+Add custom easing curves by extending `animationTimingFunction` in your `tailwind.config.js` file.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animationTimingFunction: {
+        "in-expo": "cubic-bezier(0.95, 0.05, 0.795, 0.035)",
+        "out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
+      },
+    },
+  },
+}
+```
+
+Learn more in the [theme customization](https://tailwindcss.com/docs/theme#customizing-the-default-theme) documentation.
+
+### Arbitrary values
+
+For one-off values that don't belong in your theme, use square-bracket notation to generate the property on the fly.
+
+```html
+<div class="ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">
+  <!-- ... -->
+</div>
+```
+
+Learn more in the [arbitrary values](https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values) documentation.

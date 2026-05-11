@@ -1,0 +1,95 @@
+---
+title: "Animation duration — control timing with duration-{n}"
+description: "Use duration-{amount} utilities to set animation-duration on any element. Works with animate-in, animate-out, and Tailwind's built-in animation classes."
+---
+
+The `duration-{amount}` utilities set the `animation-duration` property on an element, controlling how long a single animation cycle takes to complete. You can combine these with `animate-in`, `animate-out`, or any of Tailwind's built-in `animate-*` classes to fine-tune animation speed.
+
+## Reference
+
+| Class           | Properties                      |
+| --------------- | ------------------------------- |
+| `duration-0`    | `animation-duration: 0ms;`      |
+| `duration-75`   | `animation-duration: 75ms;`     |
+| `duration-100`  | `animation-duration: 100ms;`    |
+| `duration-150`  | `animation-duration: 150ms;`    |
+| `duration-200`  | `animation-duration: 200ms;`    |
+| `duration-300`  | `animation-duration: 300ms;`    |
+| `duration-500`  | `animation-duration: 500ms;`    |
+| `duration-700`  | `animation-duration: 700ms;`    |
+| `duration-1000` | `animation-duration: 1000ms;`   |
+
+<Note>
+  These classes reuse the same names as Tailwind's `transition-duration` utilities, since both are sourced from the `transitionDuration` theme key. This may change in a future release if it causes friction.
+</Note>
+
+## Basic usage
+
+### Changing animation duration
+
+Apply a `duration-{amount}` class alongside any animation class to control how fast or slow the animation plays.
+
+```html
+<button class="animate-bounce duration-150 ...">Button A</button>
+<button class="animate-bounce duration-300 ...">Button B</button>
+<button class="animate-bounce duration-700 ...">Button C</button>
+```
+
+## Applying conditionally
+
+### Hover, focus, and other states
+
+Use variant modifiers to apply a duration only in a specific state. For example, `hover:duration-0` removes duration on hover, effectively making the animation instantaneous.
+
+```html
+<div class="animate-bounce duration-300 hover:duration-0">
+  <!-- ... -->
+</div>
+```
+
+For a full list of available state modifiers, see the [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states) documentation.
+
+### Breakpoints and media queries
+
+Prefix any duration utility with a responsive breakpoint to apply it only at that screen size and above.
+
+```html
+<div class="animate-bounce duration-150 md:duration-0">
+  <!-- ... -->
+</div>
+```
+
+Learn more in the [Responsive Design](https://tailwindcss.com/docs/responsive-design) and [Dark Mode](https://tailwindcss.com/docs/dark-mode) documentation.
+
+## Customization
+
+### Extending the theme
+
+Add custom duration values by extending `animationDuration` in your `tailwind.config.js` file.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animationDuration: {
+        "2s": "2s",
+      },
+    },
+  },
+}
+```
+
+Learn more in the [theme customization](https://tailwindcss.com/docs/theme#customizing-the-default-theme) documentation.
+
+### Arbitrary values
+
+For one-off values that don't belong in your theme, use square-bracket notation to generate the property on the fly.
+
+```html
+<div class="duration-[2s]">
+  <!-- ... -->
+</div>
+```
+
+Learn more in the [arbitrary values](https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values) documentation.
